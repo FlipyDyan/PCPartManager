@@ -1,4 +1,12 @@
 # A PC part manager.
+import pyttsx3
+import csv
+engine = pyttsx3.init()
+
+def speak(words):
+    # Use this to add speech to your methods
+    engine.say(words)
+    engine.runAndWait()
 
 def removeParts(index):
     print() #add some code here
