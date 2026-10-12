@@ -17,6 +17,9 @@ def addParts(cost,name,ram_storage,quantity):
 def listParts():
     print()  #add some code here
 
+def updatePartListing(cost,name,ram_storage,quantity):
+    print()
+
 def main():
     print()  #add some code here
 
