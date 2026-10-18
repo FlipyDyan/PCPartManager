@@ -16,9 +16,47 @@ def removeParts():
     return main()
 
 def addParts():
-    # Most likely needs cost,name,ram_storage,quantity
     speak("Add a Part")
-    print("Add") #add some code here remove what you want
+    print("\nAdd a PC Part")
+
+    category = input(
+        "Enter PC part category (Power Supply, GPU, Motherboard, CPU, Ram): "
+    ).strip()
+
+    while category == "":
+        print("Category cannot be blank.")
+        category = input("Enter PC part category: ").strip()
+    match category.lower():
+        case "cpu":
+            example = "AMD Ryzen 5 7500F"
+        case "gpu":
+            example = "NVIDIA GeForce RTX 4060"
+        case "motherboard":
+            example = "Gigabyte B650 AORUS Elite AX"
+        case "power supply" | "powersupply" | "psu":
+            example = "Corsair RM750e"
+        case "ram":
+            example = "Corsair Vengeance 32GB DDR5"
+        case "storage" | "ssd" | "hdd":
+            example = "Samsung 990 PRO 1TB"
+        case _:
+            example = "brand and model"
+
+    name = input(
+        f"Enter component name (e.g., {example}): "
+    ).strip()
+
+    while name == "":
+        print("Component name cannot be blank.")
+        name = input("Enter component name: ").strip()
+
+    with open("partDatabase.csv", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([category, name])
+
+    print(f"\nAdded: {category} - {name}\n")
+    speak(f"{name} has been added.")
+
     return main()
 
 def listParts():
