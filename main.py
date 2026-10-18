@@ -3,7 +3,7 @@ import pyttsx3
 import csv
 
 engine = pyttsx3.init()
-FILE_NAME = "pc_parts_manager.csv"
+FILE_NAME = "partDatabase.csv"
 
 def speak(words):
     # Use this to add speech to your methods
@@ -86,7 +86,7 @@ def main():
     my_pc_parts = readParts()
 
     while True:
-        entry = input("Enter in a command: ")
+        entry = input("Enter in a command: ").strip().lower()
 
         match entry.lower():
             #Added shortened alternatives for faster testing.
@@ -102,8 +102,8 @@ def main():
             case "remove" | "r":
                 removeParts(my_pc_parts)
             case "exit" | "e":
-                print("GoodBye!")
                 speak("GoodBye!")
+                print("GoodBye!")
                 break
 
             case _:
